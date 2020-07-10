@@ -43,3 +43,23 @@ Need to install python3 if not installed previously
 24. bg
 25. disown -h
 
+Jupyter Notebook using HTTPS
+1. sudo netstat -nap | grep 8888
+2. grab the process id
+3. sudo kill -9 processid
+4. pwd
+5. mkdir ssl
+6. cd ssl
+7. sudo openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout "cert.key" -out "cert.pem" -batch
+8. ls
+9. sudo vi /home/../.jupyter/jupyter_notebook_config.py
+10. go to end of the file
+11. c.NotebookApp.certfile = u'/home.../ssl/cert.pem'
+12. c.NotebookApp.keyfile = u'/home../ssl/cert.key'
+13. :wq
+14. jupyter-notebook
+15. check https://ip
+16. control Z
+17. bg
+18. disown -h
+
